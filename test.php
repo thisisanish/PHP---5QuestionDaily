@@ -61,7 +61,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="container">
         <br>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">5 Question Daily</a>
+            <a class="navbar-brand" href="home.php">5 Question Daily</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -79,7 +79,7 @@ while ($row = $result->fetch_assoc()) {
         <div class="jumbotron">
             <legend> Here are your Questions....</legend>
             <form action="result.php" method="POST">
-                <!--point of copy-->
+                <!--point of logic-->
                 <?php
 
                 for ($i = 1; $i <= 5; ++$i) {

@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="test.php">Take a Test</a>
@@ -66,7 +66,6 @@
         $username = $_SESSION['username'];
         $con = mysqli_connect('localhost', 'root');
         if ($con) {
-            echo "connection success";
         } else {
             echo "no Conn";
         }
@@ -81,8 +80,10 @@
             $endQid = $startQid + 4;
             $nextQid = $endQid + 1;
         }
-        echo $prog;
-        $progress = explode(" ", $prog);
+
+        $progress = explode(",", $prog);
+
+
 
         $q = "select * from questions where qId between $startQid and $endQid";
 
@@ -107,15 +108,15 @@
         }
 
         array_push($progress, $score * 20);
-        $prog = implode(" ", $progress);
+        $prog = implode(",", $progress);
 
 
         echo ('<div class="center    card text-white bg-secondary mb-3" style="max-width: 100%rem;">
-<div class="card-header">So, you scored ..</div>
+<div class="card-header">So, you scored ...</div>
 <div class="card-body">
   <h4 class="card-title">'), $score * 20, ('</h4>
-  <p class="card-text">Your Answers were '), implode(" ", $userAnswer), ('</p>
-  <p class="card-text">Correct Answers were '), implode(" ", $answer), ('</p>
+  <p class="card-text">Your Answers were : '), implode(" ", $userAnswer), ('</p>
+  <p class="card-text">Correct Answers were : '), implode(" ", $answer), ('</p>
 </div>
 </div>');
 

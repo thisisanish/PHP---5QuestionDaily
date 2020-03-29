@@ -18,7 +18,6 @@
     $optionC = $_POST['optionC'];
     $optionD = $_POST['optionD'];
     $answer = $_POST['answer'];
-    // $questionCreator = $_POST['questionCreator'];
     $questionCreator = $username;
     
 

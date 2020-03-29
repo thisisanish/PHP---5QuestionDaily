@@ -30,7 +30,7 @@ $username = $_SESSION['username'];
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="test.php">Take a Test</a>
@@ -57,7 +57,8 @@ $username = $_SESSION['username'];
         <a class="btn btn-primary btn-lg" href="test.php" role="button">Take a Test</a>
       </p>
       <hr>
-      <h3>Your progress Report</h3>
+      <h3>Your progress Report :</h3>
+      <br>
 
       <?php
 
@@ -71,14 +72,16 @@ $username = $_SESSION['username'];
       $result = mysqli_query($con, $q);
       $element = $result->fetch_assoc();
       $arrayOfColours = array('success');
-      $arrayOfProgress =  explode(" ", $element['progress']);
-      for ($i = 0; $i < count($arrayOfProgress); $i++) {
-        echo ('<br><div class="progress">  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: '), $arrayOfProgress[$i], ('%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>');
+      $arrayOfProgress =  explode(",", $element['progress']);
+      for ($i = 1; $i < count($arrayOfProgress); $i++) {
+        if ($arrayOfProgress[$i] || $arrayOfProgress[$i] == 0) {
+          echo ('<h4>Test #'), $i, (', You Schored '), $arrayOfProgress[$i], ('%</h4>');
+          echo ('<div class="progress">  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: '), $arrayOfProgress[$i], ('%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><br>');
+        }
       }
+      echo ("That's all folks ¯\_(ツ)_/¯")
       ?>
-
-
     </div>
   </div>
 
